@@ -56,7 +56,12 @@
                 <li class="nav-item">
                   <a class="nav-link" href="{{ route('admin.attendance')}}">Attendance</a>
                 </li> 
-                        
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ route('admin.qrcode')}}">QR Code Generator</a>
+                </li>  
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ route('admin.setting')}}">Setting</a>
+                </li>                       
               </ul>
             </div>
           </li>

@@ -23,10 +23,8 @@ Route::middleware('auth')->group(function(){
             Route::get('shift', 'ShiftController@index')->name('shift');
             Route::get('tools', 'ToolsController@index')->name('tools');
             Route::get('attendance', 'AttendanceController@index')->name('attendance');
-            // // Route::get('qrcode', 'QrcodeController@index')->name('qrcode');
-            // Route::get('qrcode', functuin(){
-            //     return "ok";
-            // })->name("qrcode")
+            Route::get('qrcode', 'QrcodeController@index')->name('qrcode');
+            Route::get('setting', 'SettingController@index')->name('setting');
         });
     });
 });

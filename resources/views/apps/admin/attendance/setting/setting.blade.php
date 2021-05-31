@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-    Absensi | Overview
+    Absensi | Setting
 @endsection
 
 @section('title-page')
@@ -11,7 +11,7 @@
 @section('content')
     <div class="row mb-4">
         <div class="col-12 d-flex align-items-center justify-content-between">
-            <h4 class="page-title">Overview</h4>
+            <h4 class="page-title">Setting</h4>
             <div class="d-flex align-items-center">
                 <div class="wrapper mr-4 d-none d-sm-block">
                     <p class="mb-0">
@@ -34,26 +34,26 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-12">
-                            <table id="table-overview" class="table dataTable no-footer" role="grid" aria-describedby="tableoverview_info">
-                                <thead>
-                                    <tr>
-                                        <th>Title</th>
-                                        <th>Sent to</th>
-                                        <th>Type</th>
-                                        <th>Date</th>
-                                        <th>Actions</th> 
-                                    </tr>
-                                </thead>
-                                    <tr>
-                                        <td>Syafri Maradu Manurung</td>
-                                        <td>CFO</td>
-                                        <td>Finance</td>
-                                        <td></td>
-                                        <td>Active</td>
-                                    </tr>
-                                <tbody>
-                                   
-                                </tbody>
+                            <table id="table-setting" class="table dataTable no-footer" role="grid" aria-describedby="tableshift_info">
+                            <thead>
+                                <tr>
+                                    <th>Shift Name</th>
+                                    <th>Start Time</th>
+                                    <th>End Time</th>
+                                    <th>Duration</th>
+                                    <th>Holidays</th>  
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <!-- <td>1</td> -->
+                                    <td>Syafri Maradu Manurung</td>
+                                    <td>CFO</td>
+                                    <td>Finance</td>
+                                    <td></td>
+                                    <td>Active</td>
+                                </tr>
+                            </tbody>
                             </table>
                         </div>
                     </div>
@@ -62,21 +62,23 @@
         </div>
     </div>
     {{-- Modal --}}
-    @include('apps.admin.attendance.overview.modals._overview')
+    @include('apps.admin.attendance.setting.modals._setting')
 @endsection
 
 @section('footer-scripts')
     <script>
         $(document).ready(function () {
             // Create Data Table
-            $('#table-overview').DataTable();
+            $('#table-setting').DataTable();
 
             // Modal Add
             $('#add').on('click', function() {
-                $('#modal-overview').modal('show');
+                $('#modal-setting').modal('show');
             });
         });
 
 
     </script>
 @endsection
+
+

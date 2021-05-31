@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Attendance;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class QrcodeController extends Controller
+class SettingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,13 +14,14 @@ class QrcodeController extends Controller
      */
     public function index()
     {
-        return view ('apps.admin.attendance.qrcode.qrcode');
+        return view ('apps.admin.attendance.setting.setting');
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return
+     *  \Illuminate\Http\Response
      */
     public function create()
     {

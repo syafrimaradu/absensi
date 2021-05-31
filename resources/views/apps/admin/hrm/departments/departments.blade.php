@@ -37,7 +37,7 @@
                             <table id="table-departments" class="table dataTable no-footer" role="grid" aria-describedby="tableDepartments_info">
                             <thead>
                                 <tr>
-                                    <th>Manager</th>
+                                    <th>Department</th>
                                     <th>Departmen Manager</th>
                                     <th>No. Of Employe</th>
                                     <th>Actions</th>  
