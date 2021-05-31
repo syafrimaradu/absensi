@@ -38,12 +38,15 @@
             </div>
           </li>
           <li class="nav-item d-none d-md-block">
-            <a class="nav-link" data-toggle="collapse" href="#page-layouts" aria-expanded="false" aria-controls="page-layouts">
+            <a class="nav-link" data-toggle="collapse" href="#page-layouts2" aria-expanded="false" aria-controls="page-layouts">
               <i class="menu-icon icon-compass"></i>
               <span class="menu-title">Attendance</span>
             </a>
-            <div class="collapse" id="page-layouts">
+            <div class="collapse" id="page-layouts2">
               <ul class="nav flex-column sub-menu">
+              <li class="nav-item">
+                  <a class="nav-link" href="{{ route('admin.ov-attendance')}}">Overview</a>
+                </li>
                 <li class="nav-item">
                   <a class="nav-link" href="{{ route('admin.shift')}}">Shift</a>
                 </li>
