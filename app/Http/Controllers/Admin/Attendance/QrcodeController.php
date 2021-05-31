@@ -14,8 +14,7 @@ class QrcodeController extends Controller
      */
     public function index()
     {
-        // return view ('apps.admin.attendance.qrcode.qrcode');
-        return 'ok';
+        return view ('apps.admin.attendance.qrcode.qrcode');
     }
 
     /**

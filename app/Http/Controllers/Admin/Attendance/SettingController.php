@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Attendance;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class AttendanceController extends Controller
+class SettingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,14 +14,15 @@ class AttendanceController extends Controller
      */
     public function index()
     {
-        return view ('apps.admin.attendance.attendance.attendance');
+        return view ('apps.admin.attendance.setting.setting');
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
-     */vscode://vscode.github-authentication/did-authenticate?windowid=4&code=5cecffcfc7a75cda2741&state=18dde7ba-2d59-41c5-b85b-32d60779cc09
+     * @return
+     *  \Illuminate\Http\Response
+     */
     public function create()
     {
         //
