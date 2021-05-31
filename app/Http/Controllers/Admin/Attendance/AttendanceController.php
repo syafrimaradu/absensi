@@ -21,7 +21,7 @@ class AttendanceController extends Controller
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
-     */
+     */vscode://vscode.github-authentication/did-authenticate?windowid=4&code=5cecffcfc7a75cda2741&state=18dde7ba-2d59-41c5-b85b-32d60779cc09
     public function create()
     {
         //
