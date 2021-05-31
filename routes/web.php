@@ -19,6 +19,7 @@ Route::middleware('auth')->group(function(){
         });
     
         Route::prefix('/attendance')->namespace('Attendance')->group(function(){
+            Route::get('overview-attendance', 'OverviewAttController@index')->name('ov-attendance');
             Route::get('shift', 'ShiftController@index')->name('shift');
             Route::get('tools', 'ToolsController@index')->name('tools');
             Route::get('attendance', 'AttendanceController@index')->name('attendance');
