@@ -59,7 +59,7 @@
                     </div>
                     <div class="col">
                         <div class="form-group">
-                        <button Type="submit" class="btn btn-outline btn-pindah">Import</button> 
+                        <button Type="submit" class="btn btn-outline btn-pindah">Upload File</button> 
                         </div>
                     </div>
                 </div>                      
