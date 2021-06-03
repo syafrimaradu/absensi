@@ -37,10 +37,10 @@
                             <table id="table-announcements" class="table dataTable no-footer" role="grid" aria-describedby="tableAnnouncements_info">
                                 <thead>
                                     <tr>
+                                        <th>#</th>
                                         <th>Title</th>
                                         <th>Sent to</th>
-                                        <th>Type</th>
-                                        <th>Date</th>
+                                        <th>Description</th>
                                         <th>Actions</th>  
                                     </tr>
                                 </thead>

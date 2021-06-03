@@ -33,6 +33,9 @@ class AnnouncementsController extends Controller
 
                     return $button;
                 })
+                ->editColumn('description', function($data){
+                    return substr($data->description, 0, 35).'...';
+                })
                 ->rawColumns(['action'])
                 ->addIndexColumn()
                 ->make(true);
