@@ -10,12 +10,20 @@ Route::middleware('auth')->group(function(){
     Route::prefix('/admin')->name('admin.')->namespace('Admin')->middleware('Admin')->group(function(){
         Route::get('/', 'DashboardController@index')->name('/');
     
-        Route::prefix('/hrm')->namespace('Hrm')->group(function(){
+        Route::prefix('/hrm')->name('hrm.')->namespace('Hrm')->group(function(){
+            // Overview
             Route::get('overview', 'OverviewController@index')->name('overview');
             Route::get('departments', 'DepartmentsController@index')->name('departments');
             Route::get('employe', 'EmployeController@index')->name('employe');
             Route::get('designation', 'DesignationController@index')->name('designation');
+
+            // Announcement
             Route::get('announcements', 'AnnouncementsController@index')->name('announcements');
+            Route::post('announcements/store', 'AnnouncementsController@store')->name('announcements.store');
+            Route::get('announcements/edit/{announcement}', 'AnnouncementsController@edit')->name('announcements.edit');
+            Route::post('announcements/update', 'AnnouncementsController@update')->name('announcements.update');
+            Route::get('announcements/delete/{announcement}', 'AnnouncementsController@delete')->name('announcements.delete');
+
         });
     
         Route::prefix('/attendance')->namespace('Attendance')->group(function(){

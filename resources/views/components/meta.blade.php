@@ -14,3 +14,5 @@
 <!-- endinject -->
 <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" />
 <link src="http://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css"/>
+<link rel="stylesheet" href="{{ asset('vendors/themify-icons/themify-icons.css') }}">
+{{-- <link rel="stylesheet" href="{{ asset('bower_components/sweetalert/css/sweetalert.css') }}"> --}}

@@ -20,19 +20,19 @@
             <div class="collapse" id="page-layouts">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item">
-                  <a class="nav-link" href="{{ route('admin.overview') }}">Overview</a>
+                  <a class="nav-link" href="{{ route('admin.hrm.overview') }}">Overview</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{{ route('admin.employe')}}">Employe</a>
+                  <a class="nav-link" href="{{ route('admin.hrm.employe')}}">Employe</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{{ route('admin.departments')}}">Departments</a>
+                  <a class="nav-link" href="{{ route('admin.hrm.departments')}}">Departments</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{{ route('admin.announcements')}}">Announcements</a>
+                  <a class="nav-link" href="{{ route('admin.hrm.announcements')}}">Announcements</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{{ route('admin.designation')}}">Designations</a>
+                  <a class="nav-link" href="{{ route('admin.hrm.designation')}}">Designations</a>
                 </li>
               </ul>
             </div>
