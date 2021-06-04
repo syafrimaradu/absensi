@@ -7,10 +7,12 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form class="saveDep form" method="post" action="#" id="tambah" enctype="multipart/form-data">
+            <form class="saveDep form" id="form-announcement" enctype="multipart/form-data">
+                @csrf @method('POST')
                 <div class="modal-body">
                     <div class="row">
-                    <div class="col-md-12">
+                        <input type="hidden" name="id" id="id">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label for="title">Title</label>
                                 <input type="text" name="title" id="title" class="form-control form-control-lg" placeholder="">
@@ -18,26 +20,27 @@
                         </div>
                         <div class="col">
                             <div class="form-group">
-                                <label for="content">Description</label>
-                                <textarea name="content" id="content" cols="10" rows="3" class="form-control form-control-sm" placeholder=""></textarea>
+                                <label for="description">Description</label>
+                                <textarea name="description" id="description" cols="10" rows="3" class="form-control form-control-sm" placeholder=""></textarea>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label for="announcements_name">Sent to</label>
-                                <input type="text" list="browsers" name="announcements_name" id="announcements_name" class="form-control form-control-lg" placeholder="" />
-                                <datalist id="browsers">
-                                    <option value="007 - Husein Bintang Wijaya">Husein Bintang Wijaya</option>
-                                    <option value="736672 - Yuda Budi Pratama">Yuda Budi Pratama</option>
-                                    <option value="0903 - Yuda Budi Pratama">Yuda Budi Pratama</option>
-                                </datalist>
+                                <label for="sent_to">Send to</label>
+                                <select name="sent_to" id="sent_to" class="form-control form-control-sm">
+                                    <option value="All Employee">All Employee</option>
+                                    <option value="Selected Employee">Selected Employee</option>
+                                    <option value="By Departement">By Departement</option>
+                                    <option value="By Designation">By Designation</option>
+                                </select>
                             </div>
                         </div>                        
                     </div>                    
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-success">Create Request</button>
-                    <button type="button" class="btn btn-light btn-close" data-dismiss="modal">Cancel</button>
+                    <input type="hidden" id="action">
+                    <button type="submit" id="button-submit" class="btn btn-success">Save</button>
+                    <button type="button" id="" class="btn btn-light btn-close" data-dismiss="modal">Cancel</button>
                 </div>
             </form>
         </div>
