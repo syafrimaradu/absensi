@@ -24,8 +24,8 @@
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label for="employee_name">Department Manager</label>
-                                <input type="text" list="browsers" name="employee_name" id="employee_name" class="form-control form-control-lg" placeholder="" />
+                                <label for="department">Department Manager</label>
+                                <input type="text" list="browsers" name="department" id="department" class="form-control form-control-lg" placeholder="" />
                                 <datalist id="browsers">
                                     <option value="007 - Husein Bintang Wijaya">Husein Bintang Wijaya</option>
                                     <option value="736672 - Yuda Budi Pratama">Yuda Budi Pratama</option>
@@ -35,8 +35,8 @@
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label for="employee_name">Parent Department</label>
-                                <input type="text" list="browsers" name="employee_name" id="employee_name" class="form-control form-control-lg" placeholder="" />
+                                <label for="parent">Parent Department</label>
+                                <input type="text" list="browsers" name="parent" id="parent" class="form-control form-control-lg" placeholder="" />
                                 <datalist id="browsers">
                                     <option value="007 - Husein Bintang Wijaya">Husein Bintang Wijaya</option>
                                     <option value="736672 - Yuda Budi Pratama">Yuda Budi Pratama</option>
