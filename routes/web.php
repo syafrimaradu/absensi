@@ -15,7 +15,13 @@ Route::middleware('auth')->group(function(){
             Route::get('overview', 'OverviewController@index')->name('overview');
             Route::get('departments', 'DepartmentsController@index')->name('departments');
             Route::get('employe', 'EmployeController@index')->name('employe');
+
+            // Designation
             Route::get('designation', 'DesignationController@index')->name('designation');
+            Route::post('designation/store', 'DesignationController@store')->name('designation.store');
+            Route::get('designation/edit/{id}', 'DesignationController@edit')->name('designation.edit');
+            Route::post('designation/update', 'DesignationController@update')->name('designation.update');
+            Route::get('designation/delete/{id}', 'DesignationController@destroy')->name('designation.delete');
 
             // Announcement
             Route::get('announcements', 'AnnouncementsController@index')->name('announcements');

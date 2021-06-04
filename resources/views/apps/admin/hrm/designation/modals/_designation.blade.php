@@ -7,7 +7,8 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form class="saveDep form" method="post" action="#" id="tambah" enctype="multipart/form-data">
+            <form id="form-designation" class="saveDep form">
+            @csrf
                 <div class="modal-body">
                     <div class="row">
                     <div class="col-md-12">
@@ -18,14 +19,16 @@
                         </div>
                         <div class="col">
                             <div class="form-group">
-                                <label for="content">Description</label>
-                                <textarea name="content" id="content" cols="10" rows="3" class="form-control form-control-sm" placeholder=""></textarea>
+                                <label for="description">Description</label>
+                                <textarea name="description" id="description" cols="10" rows="3" class="form-control form-control-sm" placeholder=""></textarea>
                             </div>
                         </div>                        
                     </div>                    
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-success">Create Request</button>
+                    <input type="hidden" name="hidden_id" id="hidden_id">
+                    <input type="hidden" id="action" val="add">
+                    <button type="submit" class="btn-boy btn btn-success">Create Request</button>
                     <button type="button" class="btn btn-light btn-close" data-dismiss="modal">Cancel</button>
                 </div>
             </form>
