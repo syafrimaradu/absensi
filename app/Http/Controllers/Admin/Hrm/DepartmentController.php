@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Hrm;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
-use App\Models\Department;
+use App\Models\{Employee, Department};
 use Validator;
 
 class DepartmentController extends Controller
@@ -17,6 +17,8 @@ class DepartmentController extends Controller
      */
     public function index(Request $request)
     {
+        $employees = Employee::get();
+        
         if ($request->ajax()) {
             $data = Department::orderBy('id', 'desc')->get();
             return DataTables::of($data)
@@ -34,12 +36,22 @@ class DepartmentController extends Controller
 
                     return $button;
                 })
+                ->addColumn('manager', function($data){
+                    return $data->employee->name;
+                })
+                ->addColumn('sub_department', function($data){
+                    if ($data->parent_id == null) {
+                        return '-';    
+                    }
+
+                    return $data->department_parent_name;
+                })
                 ->rawColumns(['action'])
                 ->addIndexColumn()
                 ->make(true);
         }
 
-        return view('apps.admin.hrm.department.department');
+        return view('apps.admin.hrm.department.department')->with('employees', $employees);
     }
 
     /**
@@ -52,7 +64,20 @@ class DepartmentController extends Controller
     {
         $data = $request->all();
         
-        Department::create($data);
+        $parent_departement_name = null;
+        if (!empty($request->parent_id)) {
+            $get_department = Department::findOrFail($request->parent_id);
+            $parent_departement_name = $get_department->name;
+        }
+
+        Department::create([
+            'name' => $request->name,
+            'address' => $request->address,
+            'manager' => $request->manager,
+            'employee_id' => $request->employee_id,
+            'parent_id' => $request->parent_id,
+            'parent_department_name' => $parent_departement_name
+        ]);
 
         return response()->json([
             'success' => true,
@@ -68,12 +93,7 @@ class DepartmentController extends Controller
      */
     public function edit(Department $department)
     {
-        return response()->json([
-            'id' => $announcement->id,
-            'title' => $announcement->title,
-            'description' => $announcement->description,
-            'sent_to' => $announcement->sent_to,
-        ]);
+        return response()->json(['department' => $department]);
     }
 
     /**
@@ -86,9 +106,9 @@ class DepartmentController extends Controller
     public function update(Request $request)
     {
         $data = $request->all();
-        $announcement = Announcement::findOrFail($request->id);
+        $department = Department::findOrFail($request->hidden_id);
 
-        $announcement->update($data);
+        $department->update($data);
 
         return response()->json([
             'success' => true,
@@ -104,11 +124,20 @@ class DepartmentController extends Controller
      */
     public function delete(Department $department)
     {
-        $announcement->delete();
+        $department->delete();
 
         return response()->json([
             'success' => true,
             'message' => 'Data telah terhapus'
+        ]);
+    }
+
+    public function getParentDepartment(){
+        $departments = Department::get();
+
+        return response()->json([
+            'success' => true,
+            'departments' => $departments
         ]);
     }
 }

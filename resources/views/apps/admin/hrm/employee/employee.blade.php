@@ -113,7 +113,7 @@
             $('#action').val('add');
             
             // show modal
-            $('#modal-employe').modal('show');
+            $('#modal-employee').modal('show');
         });
 
 

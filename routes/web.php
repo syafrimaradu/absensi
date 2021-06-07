@@ -41,6 +41,9 @@ Route::middleware('auth')->group(function(){
             Route::get('department/edit/{department}', 'DepartmentController@edit')->name('department.edit');
             Route::post('department/update', 'DepartmentController@update')->name('department.update');
             Route::get('department/delete/{department}', 'DepartmentController@delete')->name('department.delete');
+            Route::get('department/get-parent-department', 'DepartmentController@getParentDepartment')->name('department.get-parent-department');
+
+            
         });
     
         Route::prefix('/attendance')->namespace('Attendance')->group(function(){
