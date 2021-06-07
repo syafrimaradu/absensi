@@ -38,9 +38,9 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Department</th>
+                                    <th>Department Name</th>
                                     <th>Departmen Manager</th>
-                                    <th>No. Of Employe</th>
+                                    <th>Sub Department</th>
                                     <th>Actions</th>  
                                 </tr>
                             </thead>
@@ -87,9 +87,9 @@
                 },
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-                    {data: 'department', name: 'department'},
+                    {data: 'name', name: 'name'},
                     {data: 'manager', name: 'manager'},
-                    {data: 'number_of_employee', name: 'number_of_employee'},
+                    {data: 'sub_department', name: 'sub_department'},
                     {data: 'action', name: 'action'},
                 ]
             });
@@ -97,7 +97,7 @@
             // Modal Add
             $('#add').on('click', function() {
                 // Change Title
-                $('.modal-title').html('Add Announcement');
+                $('.modal-title').html('Add Department');
                 // Clear Form Control after triggered
                 $('.form-control').val('');
 
@@ -109,25 +109,53 @@
 
                 // change action 
                 $('#action').val('add');
+
+                // call department json
+                getDepartment();
                 
                 // show modal
-                $('#modal-departments').modal('show');
+                $('#modal-department').modal('show');
             });
 
 
+            function getDepartment(parent_id){
+                $.ajax({
+                    url: `{{ route('admin.hrm.department.get-parent-department') }}`,
+                    success: function (data) {
+                        // show parent id group
+                        $('#parent-id-group').show();
+                        
+                        // if passed
+                        if (data.success) {
+                            let departments = data.departments;
+                            if (departments.length >= 1) {
+                                $('#parent_id').html('');
+                                $('#parent_id').append(`<option>-Silahkan Pilih-</option>`);
+                                departments.forEach(department => {
+                                    $('#parent_id').append(`<option value="${department.id}" ${ department.id == parent_id ? 'selected' : '' }>${department.name}</option>`);
+                                });   
+                            }else{
+                                $('#parent-id-group').hide();
+                            }
+                        }
+                    }
+                });
+            }
+
+
             // Submit Event
-            $('#form-announcement').on('submit', function (event) {
+            $('#form-department').on('submit', function (event) {
                 event.preventDefault();
                 let url = '';
 
                 if ($('#action').val() == 'add') {
-                    url = "{{ route('admin.hrm.announcements.store') }}";
+                    url = "{{ route('admin.hrm.department.store') }}";
                 }
                 if ($('#action').val() == 'edit') {
-                    url = "{{ route('admin.hrm.announcements.update') }}";
+                    url = "{{ route('admin.hrm.department.update') }}";
                 }
                 
-                let formData = new FormData($('#form-announcement')[0]);
+                let formData = new FormData($('#form-department')[0]);
 
                 $.ajax({
                     url: url,
@@ -148,12 +176,12 @@
                         if (data.success) {
                             // Show Sweat Alert
                             Swal.fire('Success', data.message, 'success');
-                            $('#modal-announcements').modal('hide');
+                            $('#modal-department').modal('hide');
 
                             // Remove Class is-invalid
                             $('.form-control').removeClass('is-invalid');
                             // refresh table
-                            $('#table-announcements').DataTable().ajax.reload();
+                            $('#table-departments').DataTable().ajax.reload();
                         }
                     }
                 });
@@ -163,19 +191,23 @@
             $(document).on('click', '.edit', function () {
                 let id = $(this).attr('data-id');
                 $.ajax({
-                    url: `announcements/${id}`,
+                    url: `department/edit/${id}`,
                     dataType: 'JSON',
                     success: function (data) {
-                        $('.modal-title').html('Edit Announcement');
+                        $('.modal-title').html('Edit Department');
                         // change action
                         $('#action').val('edit');
-                        // insert data to input
-                        $('#id').val(data.id);
-                        $('#title').val(data.title);
-                        $('#sent_to').val(data.sent_to);
-                        $('#description').val(data.description);
+                        
+                        // get department
+                        getDepartment(Number(data.department.parent_id));
 
-                        $('#modal-announcements').modal('show');
+                        // insert data to input
+                        $('#id').val(data.department.id);
+                        $('#name').val(data.department.name);
+                        $('#address').val(data.department.address);
+                        $('#employee_id').val(data.department.employee_id);
+
+                        $('#modal-department').modal('show');
                     }
                 });
             });
@@ -190,13 +222,13 @@
 
             $('#ok_button').click(function () {
                 $.ajax({
-                    url: `announcements/delete/${id}`,
+                    url: `department/delete/${id}`,
                     beforeSend: function () {
                         $('#ok_button').text('Menghapus...');
                     }, success: function (data) {
                         setTimeout(function () {
                             $('#confirmModal').modal('hide');
-                            $('#table-announcements').DataTable().ajax.reload();
+                            $('#table-departments').DataTable().ajax.reload();
                             Swal.fire('Sukses!', data.message, 'success');
                         }, 1000);
                     }
