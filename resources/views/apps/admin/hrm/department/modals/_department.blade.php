@@ -7,7 +7,8 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form class="saveDep form" method="post" action="#" id="tambah" enctype="multipart/form-data">
+            <form class="saveDep form" id="department-form" enctype="multipart/form-data">
+                @csrf @method('POST')
                 <div class="modal-body">
                     <div class="row">
                     <div class="col-md-12">
@@ -25,23 +26,17 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="department">Department Manager</label>
-                                <input type="text" list="browsers" name="department" id="department" class="form-control form-control-lg" placeholder="" />
-                                <datalist id="browsers">
-                                    <option value="007 - Husein Bintang Wijaya">Husein Bintang Wijaya</option>
-                                    <option value="736672 - Yuda Budi Pratama">Yuda Budi Pratama</option>
-                                    <option value="0903 - Yuda Budi Pratama">Yuda Budi Pratama</option>
-                                </datalist>
+                                <select name="employee_id" id="employee_id" class="form-control form-control-lg">
+                                    <option value="">-Silahkan Pilih-</option>
+                                </select>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="parent">Parent Department</label>
-                                <input type="text" list="browsers" name="parent" id="parent" class="form-control form-control-lg" placeholder="" />
-                                <datalist id="browsers">
-                                    <option value="007 - Husein Bintang Wijaya">Husein Bintang Wijaya</option>
-                                    <option value="736672 - Yuda Budi Pratama">Yuda Budi Pratama</option>
-                                    <option value="0903 - Yuda Budi Pratama">Yuda Budi Pratama</option>
-                                </datalist>
+                                <select name="parent" id="parent" class="form-control form-control-lg">
+                                    <option value="">-Silahkan Pilih-</option>
+                                </select>
                             </div>
                         </div>
                     </div>                    

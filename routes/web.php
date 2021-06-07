@@ -13,9 +13,13 @@ Route::middleware('auth')->group(function(){
         Route::prefix('/hrm')->name('hrm.')->namespace('Hrm')->group(function(){
             // Overview
             Route::get('overview', 'OverviewController@index')->name('overview');
-            Route::get('departments', 'DepartmentsController@index')->name('departments');
-            Route::get('employe', 'EmployeController@index')->name('employe');
+
+            // Designation
             Route::get('designation', 'DesignationController@index')->name('designation');
+            Route::post('designation/store', 'DesignationController@store')->name('designation.store');
+            Route::get('designation/edit/{designation}', 'DesignationController@edit')->name('designation.edit');
+            Route::post('designation/update', 'DesignationController@update')->name('designation.update');
+            Route::get('designation/delete/{designation}', 'DesignationController@destroy')->name('designation.delete');
 
             // Announcement
             Route::get('announcements', 'AnnouncementsController@index')->name('announcements');
@@ -24,6 +28,19 @@ Route::middleware('auth')->group(function(){
             Route::post('announcements/update', 'AnnouncementsController@update')->name('announcements.update');
             Route::get('announcements/delete/{announcement}', 'AnnouncementsController@delete')->name('announcements.delete');
 
+            // Employee
+            Route::get('employee', 'EmployeeController@index')->name('employee');
+            Route::post('employee/store', 'EmployeeController@store')->name('employee.store');
+            Route::get('employee/edit/{employee}', 'EmployeeController@edit')->name('employee.edit');
+            Route::post('employee/update', 'EmployeeController@update')->name('employee.update');
+            Route::get('employee/delete/{employee}', 'EmployeeController@delete')->name('employee.delete');
+
+            // Department
+            Route::get('department', 'DepartmentController@index')->name('department');
+            Route::post('department/store', 'DepartmentController@store')->name('department.store');
+            Route::get('department/edit/{department}', 'DepartmentController@edit')->name('department.edit');
+            Route::post('department/update', 'DepartmentController@update')->name('department.update');
+            Route::get('department/delete/{department}', 'DepartmentController@delete')->name('department.delete');
         });
     
         Route::prefix('/attendance')->namespace('Attendance')->group(function(){

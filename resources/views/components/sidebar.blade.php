@@ -23,16 +23,16 @@
                   <a class="nav-link" href="{{ route('admin.hrm.overview') }}">Overview</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{{ route('admin.hrm.employe')}}">Employe</a>
+                  <a class="nav-link" href="{{ route('admin.hrm.designation')}}">Designations</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{{ route('admin.hrm.departments')}}">Departments</a>
+                  <a class="nav-link" href="{{ route('admin.hrm.employee')}}">Employee</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ route('admin.hrm.department')}}">Departments</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="{{ route('admin.hrm.announcements')}}">Announcements</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{{ route('admin.hrm.designation')}}">Designations</a>
                 </li>
               </ul>
             </div>

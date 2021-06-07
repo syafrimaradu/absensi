@@ -12,6 +12,7 @@
                 <div class="modal-body">
                     <div class="row">
                         <input type="hidden" name="id" id="id">
+                        
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="title">Title</label>
