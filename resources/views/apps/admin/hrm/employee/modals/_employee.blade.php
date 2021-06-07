@@ -1,4 +1,4 @@
-<div class="modal fade" id="modal-employe" tabindex="-1" role="dialog" aria-labelledby="formStaffLabel" data-backdrop="static" data-keyboard="false">
+<div class="modal fade" id="modal-employee" tabindex="-1" role="dialog" aria-labelledby="formStaffLabel" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog" role="document" style="margin-top: 15px; margin-bottom: 0;">
         <div class="modal-content">
             <div class="modal-header">
@@ -7,13 +7,20 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form class="saveDep form" method="post" action="#" id="tambah" enctype="multipart/form-data">
+            <form class="saveDep form" id="form-employee" enctype="multipart/form-data">
+                @csrf @method('post')
                 <div class="modal-body">
                     <div class="row">
-                    <div class="col-md-12">
+                        <div class="col-md-12">
                             <div class="form-group">
-                                <label for="title">Name</label>
-                                <input type="text" name="title" id="title" class="form-control form-control-lg" placeholder="">
+                                <label for="name">Name</label>
+                                <input type="text" name="name" id="name" class="form-control form-control-lg" placeholder="">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="phone_number">Phone Number</label>
+                                <input type="number" name="phone_number" id="phone_number" class="form-control form-control-lg" placeholder="">
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -28,33 +35,27 @@
                         </div>     
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label for="content">Addres</label>
-                                <textarea name="content" id="content" cols="10" rows="3" class="form-control form-control-sm" placeholder=""></textarea>
+                                <label for="address">Addres</label>
+                                <textarea name="address" id="address" cols="10" rows="3" class="form-control form-control-sm" placeholder=""></textarea>
                             </div>
                         </div> 
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label for="shift">Shift</label>
-                                <select name="shift" id="shift" class="form-control form-control-sm">
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                </select>
-                            </div>
-                        </div>                     
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="position">Position</label>
-                                <select name="position" id="position" class="form-control form-control-sm">                                    
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
+                                <label for="designation_id">Position</label>
+                                <select name="designation_id" id="designation_id" class="form-control form-control-sm">                                    
+                                    <option value="">-Silahkan Pilih-</option>
+                                    @foreach ($designations as $designation)
+                                        <option value="{{ $designation->id }}">{{ $designation->title }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>                       
                     </div>                    
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-success">Create Request</button>
+                    <input type="hidden" name="hidden_id" id="id">
+                    <input type="hidden" id="action">
+                    <button type="submit" class="btn btn-success">Save</button>
                     <button type="button" class="btn btn-light btn-close" data-dismiss="modal">Cancel</button>
                 </div>
             </form>

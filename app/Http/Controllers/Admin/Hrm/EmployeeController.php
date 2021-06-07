@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Admin\Hrm;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
-use App\Models\Designation;
+use App\Models\{Designation, Employee};
 use Validator;
 
-class DesignationController extends Controller
+class EmployeeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,10 @@ class DesignationController extends Controller
      */
     public function index(Request $request)
     {
+        $designations = Designation::get();
+        
         if ($request->ajax()) {
-            $data = Designation::orderBy('id', 'desc')->get();
+            $data = Employee::orderBy('id', 'desc')->get();
             return DataTables::of($data)
                 ->addColumn('action', function ($data) {
                     $button = '
@@ -27,24 +29,23 @@ class DesignationController extends Controller
                             <i class="ti-more-alt"></i>
                         </button>
                         <div class="dropdown-menu" style="min-width: 10px">
-                            <button class="btn btn-link edit" id="'.$data->id.'" style="color: yellow"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-link delete" id="'.$data->id.'" style="color: red"><i class="fa fa-trash-o"></i></button>
+                            <button class="btn btn-link edit" data-id="'.$data->id.'" style="color: yellow"><i class="fa fa-pencil"></i></button>
+                            <button class="btn btn-link delete" data-id="'.$data->id.'" style="color: red"><i class="fa fa-trash-o"></i></button>
                         </div>
                     </div>';
 
                     return $button;
                 })
-                ->editColumn('description', function($data){
-                    return substr($data->description, 0, 35).'...';
+                ->addColumn('position', function($data){
+                    return $data->designation->title;
                 })
                 ->rawColumns(['action'])
                 ->addIndexColumn()
                 ->make(true);
         }
 
-        return view ('apps.admin.hrm.designation.designation');
+        return view ('apps.admin.hrm.employee.employee')->with('designations', $designations);
     }
-
 
     /**
      * Store a newly created resource in storage.
@@ -54,26 +55,10 @@ class DesignationController extends Controller
      */
     public function store(Request $request)
     {
-        $rules = [
-            'title'  => 'required',
-            'description' => 'required',
-        ];
-
-        $message = [
-            'title.required' => 'Kolom title ini tidak boleh kosong',
-            'description.required' => 'Kolom description ini tidak boleh kosong',
-        ];
-
-        Designation::create([
-            'title' => $request->title,
-            'description' => $request->description,
-        ]);
-       
-        return response()
-            ->json(['success' => 'Data Added.']);
+        Employee::create($request->all());
+        
+        return response()->json(['success' => 'data telah disimpan']);
     }
-
-
 
     /**
      * Show the form for editing the specified resource.
@@ -81,9 +66,9 @@ class DesignationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Type $type)
+    public function edit(Employee $employee)
     {
-        return response()->json(['type' => $type]);
+        return response()->json(['employee' => $employee]);
     }
 
     /**
@@ -93,12 +78,13 @@ class DesignationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request )
-    {  
-        $designation = Designation::findOrFail($request->hidden_id);
-        $designation->update($request->all());
+    public function update(Request $request)
+    {
+        $employee = Employee::findOrFail($request->hidden_id);
 
-        return response()->json(['success' => 'Data Updated.']);
+        $employee->update($request->all());
+
+        return response()->json(['success' => 'data telah disimpan']);
     }
 
     /**
@@ -107,9 +93,10 @@ class DesignationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete(Employee $employee)
     {
-        $design = Designation::find($id);
-        $design->delete();
+        $employee->delete();
+
+        return response()->json(['success' => 'data telah disimpan']);
     }
 }
