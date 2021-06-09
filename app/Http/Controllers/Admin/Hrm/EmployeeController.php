@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Hrm;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
-use App\Models\{Designation, Employee};
+use App\Models\{Designation, Shift, Employee};
 use Validator;
 
 class EmployeeController extends Controller
@@ -18,7 +18,7 @@ class EmployeeController extends Controller
     public function index(Request $request)
     {
         $designations = Designation::get();
-        
+        $shifts = Shift::get();
         if ($request->ajax()) {
             $data = Employee::orderBy('id', 'desc')->get();
             return DataTables::of($data)
@@ -36,6 +36,9 @@ class EmployeeController extends Controller
 
                     return $button;
                 })
+                ->addColumn('shift_name', function($data){
+                    return $data->shift->shift_name;
+                })
                 ->addColumn('position', function($data){
                     return $data->designation->title;
                 })
@@ -44,7 +47,9 @@ class EmployeeController extends Controller
                 ->make(true);
         }
 
-        return view ('apps.admin.hrm.employee.employee')->with('designations', $designations);
+        return view ('apps.admin.hrm.employee.employee')
+                                ->with('shifts', $shifts)
+                                ->with('designations', $designations);
     }
 
     /**

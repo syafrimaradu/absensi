@@ -46,9 +46,16 @@ Route::middleware('auth')->group(function(){
             
         });
     
-        Route::prefix('/attendance')->namespace('Attendance')->group(function(){
+        Route::prefix('/attendance')->name('attendance.')->namespace('Attendance')->group(function(){
             Route::get('overview-attendance', 'OverviewAttController@index')->name('ov-attendance');
+            
+            // Shift
             Route::get('shift', 'ShiftController@index')->name('shift');
+            Route::post('shift/store', 'ShiftController@store')->name('shift.store');
+            Route::get('shift/edit/{shift}', 'ShiftController@edit')->name('shift.edit');
+            Route::post('shift/update', 'ShiftController@update')->name('shift.update');
+            Route::get('shift/delete/{shift}', 'ShiftController@delete')->name('shift.delete');
+
             Route::get('tools', 'ToolsController@index')->name('tools');
             Route::get('attendance', 'AttendanceController@index')->name('attendance');
             Route::get('qrcode', 'QrcodeController@index')->name('qrcode');

@@ -41,6 +41,17 @@
                         </div> 
                         <div class="col-md-12">
                             <div class="form-group">
+                                <label for="shift_id">Shift</label>
+                                <select name="shift_id" id="shift_id" class="form-control form-control-sm">                                    
+                                    <option value="">-Silahkan Pilih-</option>
+                                    @foreach ($shifts as $shift)
+                                        <option value="{{ $shift->id }}">{{ $shift->shift_name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
                                 <label for="designation_id">Position</label>
                                 <select name="designation_id" id="designation_id" class="form-control form-control-sm">                                    
                                     <option value="">-Silahkan Pilih-</option>
