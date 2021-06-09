@@ -16,6 +16,10 @@ class Employee extends Model
     }
 
     public function department(){
-        return $thos->hasMany(Department::class);
+        return $this->hasMany(Department::class);
+    }
+
+    public function shift(){
+        return $this->belongsTo(Shift::class);
     }
 }

@@ -42,6 +42,7 @@
                                     <th>Gender</th>
                                     <th>Addres</th>
                                     <th>Position</th>
+                                    <th>Shift</th>
                                     <th>Actions</th>  
                                 </tr>
                             </thead>
@@ -92,6 +93,7 @@
                 {data: 'gender', name: 'gender'},
                 {data: 'address', name: 'address'},
                 {data: 'position', name: 'position'},
+                {data: 'shift_name', name: 'shift_name'},
                 {data: 'action', name: 'action'},
             ]
         });

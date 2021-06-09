@@ -45,22 +45,22 @@
             <div class="collapse" id="page-layouts2">
               <ul class="nav flex-column sub-menu">
               <li class="nav-item">
-                  <a class="nav-link" href="{{ route('admin.ov-attendance')}}">Overview</a>
+                  <a class="nav-link" href="{{ route('admin.attendance.ov-attendance')}}">Overview</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{{ route('admin.shift')}}">Shift</a>
+                  <a class="nav-link" href="{{ route('admin.attendance.shift')}}">Shift</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{{ route('admin.tools')}}">Tools</a>
+                  <a class="nav-link" href="{{ route('admin.attendance.tools')}}">Tools</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{{ route('admin.attendance')}}">Attendance</a>
+                  <a class="nav-link" href="{{ route('admin.attendance.attendance')}}">Attendance</a>
                 </li> 
                 <li class="nav-item">
-                  <a class="nav-link" href="{{ route('admin.qrcode')}}">QR Code Generator</a>
+                  <a class="nav-link" href="{{ route('admin.attendance.qrcode')}}">QR Code Generator</a>
                 </li>  
                 <li class="nav-item">
-                  <a class="nav-link" href="{{ route('admin.setting')}}">Setting</a>
+                  <a class="nav-link" href="{{ route('admin.attendance.setting')}}">Setting</a>
                 </li>                       
               </ul>
             </div>

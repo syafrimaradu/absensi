@@ -7,45 +7,49 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form class="saveDep form" method="post" action="#" id="tambah" enctype="multipart/form-data">
+            <form class="saveDep form" id="form-shift" enctype="multipart/form-data">
+                @csrf @method('post')
                 <div class="modal-body">
                     <div class="row">
                     <div class="col-md-12">
                             <div class="form-group">
-                                <label for="shift">Shift Name</label>
-                                <input type="text" name="shift" id="shift" class="form-control form-control-lg" placeholder="">
+                                <label for="employee_id">Shift Name</label>
+                                <input type="text" class="form-control form-control-lg" id="shift_name" name="shift_name">
                             </div>
                         </div>                        
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="start_date" class="bmd-label-floating">Start Date</label>
-                                <input type="text" class="form-control form-control-lg" id="start_date" name="start_date" readonly>
+                                <label for="start_time" class="bmd-label-floating">Start Time</label>
+                                <input type="time" class="form-control form-control-lg" id="start_time" name="start_time">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="end_date" class="bmd-label-floating">End Date</label>
-                                <input type="text" class="form-control form-control-lg" id="end_date" name="end_date" readonly>
+                                <label for="end_time" class="bmd-label-floating">End Time</label>
+                                <input type="time" class="form-control form-control-lg" id="end_time" name="end_time">
                             </div>
                         </div>                                                
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label for="holidays">Holidays</label>
-                                <input type="text" list="browsers" name="holidays" id="holidays" class="form-control form-control-lg" placeholder="" />
-                                <datalist id="browsers">
-                                </datalist>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="content">Description</label>
-                                <textarea name="content" id="content" cols="10" rows="3" class="form-control form-control-sm" placeholder=""></textarea>
+                                <label for="day">Day</label>
+                                <select name="day" id="day" class="form-control form-control-lg">
+                                    <option value="">-Silahkan Pilih-</option>
+                                    <option value="sunday">Sunday</option>
+                                    <option value="monday">Monday</option>
+                                    <option value="tuesday">Tuesday</option>
+                                    <option value="wednesday">Wednesday</option>
+                                    <option value="thursday">Thursday</option>
+                                    <option value="friday">Friday</option>
+                                    <option value="saturday">Saturday</option>
+                                </select>
                             </div>
                         </div>
                     </div>                    
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-success">Create Request</button>
+                    <input type="hidden" name="hidden_id" id="id">
+                    <input type="hidden" id="action">
+                    <button type="submit" class="btn btn-success">Save</button>
                     <button type="button" class="btn btn-light btn-close" data-dismiss="modal">Cancel</button>
                 </div>
             </form>
